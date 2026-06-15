@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Relatórios - Estacionamento</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <header>
+        <h1>Relatório de Movimentação Financeira e Vagas</h1>
+        <nav><a href="/">Voltar ao Início</a></nav>
+    </header>
+
+    <main class="container">
+        <section class="card">
+            <h2>Histórico Recente</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Placa</th>
+                        <th>Tipo de Vaga</th>
+                        <th>Entrada</th>
+                        <th>Saída</th>
+                        <th>Valor Cobrado</th>
+                    </tr>
+                </thead>
+                <tbody id="tabela-relatorio">
+                    </tbody>
+            </table>
+        </section>
+    </main>
+
+    <script>
+        // Carrega os dados assim que a página abre
+        window.onload = function() {
+            fetch('/api/relatorio')
+            .then(res => res.json())
+            .then(dados => {
+                const tabela = document.getElementById('tabela-relatorio');
+                tabela.innerHTML = '';
+                dados.forEach(item => {
+                    tabela.innerHTML += `
+                        <tr>
+                            <td>${item.placa}</td>
+                            <td>${item.tipo_vaga}</td>
+                            <td>${item.entrada}</td>
+                            <td>${item.saida}</td>
+                            <td>${item.valor}</td>
+                        </tr>
+                    `;
+                });
+            });
+        }
+    </script>
+</body>
+</html>

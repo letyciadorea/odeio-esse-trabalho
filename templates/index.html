@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estacionamento Fácil</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <header>
+        <h1>Sistema de Gestão de Estacionamento</h1>
+        <nav>
+            <a href="/">Home</a> | 
+            <a href="/relatorios_page">Relatórios</a>
+        </nav>
+    </header>
+
+    <main class="container">
+        <section class="card">
+            <h2>Controle de Fluxo (Placas)</h2>
+            <div class="form-group">
+                <input type="text" id="fluxo-placa" placeholder="Placa do Veículo (ABC1234)">
+                <select id="fluxo-vaga">
+                    <option value="Normal">Vaga Normal</option>
+                    <option value="Preferencial">Vaga Preferencial (Idoso/PCD)</option>
+                </select>
+                <button onclick="registrarEntrada()">Registrar Entrada</button>
+                <button onclick="registrarSaida()" class="btn-secondary">Registrar Saída</button>
+            </div>
+        </section>
+
+        <section class="card">
+            <h2>Cadastro de Clientes e Veículos</h2>
+            <form id="form-cadastro" onsubmit="cadastrarCliente(event)">
+                <input type="text" id="cad-nome" placeholder="Nome do Cliente" required>
+                <input type="text" id="cad-tel" placeholder="Telefone">
+                <select id="cad-plano">
+                    <option value="Rotativo">Rotativo</option>
+                    <option value="Mensalista">Mensalista</option>
+                    <option value="Anual">Anual</option>
+                </select>
+                <hr>
+                <input type="text" id="cad-placa" placeholder="Placa" required>
+                <input type="text" id="cad-modelo" placeholder="Modelo/Marca">
+                <input type="text" id="cad-cor" placeholder="Cor">
+                <select id="cad-tipo">
+                    <option value="Normal">Carro Normal</option>
+                    <option value="Preferencial">Preferencial</option>
+                </select>
+                <button type="submit">Salvar Cadastro</button>
+            </form>
+        </section>
+    </main>
+
+    <script src="/static/js/main.js"></script>
+</body>
+</html>
